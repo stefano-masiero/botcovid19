@@ -1,0 +1,35 @@
+[22-May-2020 07:34:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function children() on array in /home/ejbygfzs/public_html/prova.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 7
+[22-May-2020 07:34:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function children() on array in /home/ejbygfzs/public_html/prova.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 7
+[22-May-2020 07:34:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function children() on array in /home/ejbygfzs/public_html/prova.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 7
+[22-May-2020 07:49:33 UTC] PHP Warning:  file_get_contents(path-to-file/example.html): failed to open stream: No such file or directory in /home/ejbygfzs/public_html/assets/simple_html_dom.php on line 1556
+[22-May-2020 08:14:56 UTC] PHP Warning:  Use of undefined constant a - assumed 'a' (this will throw an Error in a future version of PHP) in /home/ejbygfzs/public_html/prova.php on line 8
+[22-May-2020 08:45:06 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /home/ejbygfzs/public_html/prova.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 10
+[22-May-2020 08:45:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /home/ejbygfzs/public_html/prova.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 10
+[22-May-2020 08:45:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /home/ejbygfzs/public_html/prova.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 10
+[22-May-2020 08:45:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /home/ejbygfzs/public_html/assets/simple_html_dom.php:1582
+Stack trace:
+#0 /home/ejbygfzs/public_html/prova.php(10): simple_html_dom->find('div')
+#1 {main}
+  thrown in /home/ejbygfzs/public_html/assets/simple_html_dom.php on line 1582
+[22-May-2020 08:45:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /home/ejbygfzs/public_html/prova.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/ejbygfzs/public_html/prova.php on line 11
