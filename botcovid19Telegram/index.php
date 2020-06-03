@@ -32,7 +32,7 @@ switch ($text) {
 
     case "/start":
 
-        $tastieraBenvenuto = '["Contagi","Notizie"],["Help"]';
+        $tastieraBenvenuto = '["Contagi 📈","Notizie 🗞"],["Help"]';
 
         sendMessage($chatId, "Benvenuto in questo bot, <b>" . $nameUtente . "</b> ", $tastieraBenvenuto);
 
@@ -41,7 +41,7 @@ switch ($text) {
 
     case "Back":
 
-        $tastieraBenvenuto = '["Contagi","Notizie"],["Help"]';
+        $tastieraBenvenuto = '["Contagi 📈","Notizie 🗞"],["Help"]';
 
         sendMessage($chatId, "Menu Principale", $tastieraBenvenuto);
 
@@ -73,105 +73,104 @@ switch ($text) {
 
     case "/contagi":
 
-    case "Contagi":
-        $tastieraBenvenuto = '["Europa","America"],["Asia", "Africa"],["Oceania", "Tutto il mondo"],["Italia","Cerca una regione"],["Back"]';
+    case "Contagi 📈":
+        $tastieraBenvenuto = '["📉 Europa 📈","📉 America 📈"],["📉 Asia 📈", "📉 Africa 📈"],["📉 Oceania 📈", "📉 Tutto il mondo 📈"],["📉 Italia 📈","📉Cerca regione📈"],["Back"]';
         sendMessage($chatId, "Seleziona il continente", $tastieraBenvenuto);
-         sendMessage($chatId,$_SESSION['lastScelta']);
         break;
         
     case "/notizie":   
-    case "Notizie":
-            $tastieraBenvenuto = '["Europa","America"],["Asia", "Africa"],["Oceania", "Tutto il mondo"],["Back"]';
+    case "Notizie 🗞":
+            $tastieraBenvenuto = '["🗞 Europa 🗞","🗞 America 🗞"],["🗞 Asia 🗞", "🗞 Africa 🗞"],["🗞 Oceania 🗞", "🗞 Tutto il mondo 🗞"],["Back"]';
         sendMessage($chatId, "Seleziona il continente", $tastieraBenvenuto);
         break;
 
     //Parte della selezione del continente
-    case "America":
-        if($last_scelta=="Contagi"){
+    case "📉 America 📈":
         $tastieraBenvenuto = '["Nord America","Sud America"],["Back"]';
         sendMessage($chatId, "Seleziona il continente", $tastieraBenvenuto);
-        }
-        else{
-            invioNotiziePerContinente("America");
-        }
         break;
 
-    case "Nord America":
+    case "📉 Nord America 📈":
         $ContScelto = 'America Nord';
         invioDatiContagi($ContScelto);
         break;
 
-    case "Sud America":
+    case "📉 Sud America 📈":
         $ContScelto = 'America Sud';
         invioDatiContagi($ContScelto);
         break;
 
-    case "Europa":
+    case "📉 Europa 📈":
         $ContScelto = 'Europa';
-        if($_SESSION['lastScelta']=="Contagi"){
         invioDatiContagi($ContScelto);
-        sendMessage($chatId,$_SESSION['lastScelta']);
-        }else{
-            invioNotiziePerContinente($ContScelto);
-            sendMessage($chatId,$_SESSION['lastScelta']);
-        }
         break;
 
-    case "Asia":
+    case "📉 Asia 📈":
         $ContScelto = 'Asia';
-       if($_SESSION['lastScelta']=="Contagi"){
         invioDatiContagi($ContScelto);
-        }else{
-            invioNotiziePerContinente($ContScelto);
-        }
         break;
 
-    case "Africa":
+    case "📉 Africa 📈":
         $ContScelto = 'Africa';
-        if($last_scelta=="Contagi"){
         invioDatiContagi($ContScelto);
-        }else{
-            invioNotiziePerContinente($ContScelto);
-        }
         break;
 
-    case "Oceania":
+    case "📉 Oceania 📈":
         $ContScelto = 'Oceania';
-        if($last_scelta=="Contagi"){
         invioDatiContagi($ContScelto);
-        }else{
-            invioNotiziePerContinente($ContScelto);
-        }
         break;
         
-    case "Italia":
+    case "📉 Italia 📈":
         $italia = 'Italy';
         invioDatiContagiRegione($italia);
         break;
         
-    case "Tutto il mondo":
-        if($last_scelta=="Contagi"){
+    case "📉 Tutto il mondo 📈":
         invioDatiContagi();
-        }else{
-            invioNotiziePerContinente();
-        }
         break;
     
-    /*case "Cerca una regione":
+    case "📉Cerca regione📈":
         $tastieraBenvenuto = '["Back"]';
-        sendMessage($chatId, "Scrivi il nome di una regione (in inglese)", $tastieraBenvenuto);
-        //invioDatiContagiRegione($regioneScelta);
-        break;*/
+        sendMessage($chatId, "Lavori in corso 🚧", $tastieraBenvenuto);
+    /*    sendMessage($chatId, "Scrivi il nome di una regione (in inglese)", $tastieraBenvenuto);
+        //invioDatiContagiRegione($regioneScelta);*/
+        break;
         
+    /******************************************************************************** */
+        
+   case "🗞 America 🗞":
+            invioNotiziePerContinente("America");
+        break;
 
+    case "🗞 Europa 🗞":
+        $ContScelto = 'Europa';
+            invioNotiziePerContinente($ContScelto);
+        break;
+
+    case "🗞 Asia 🗞":
+         $ContScelto = 'Asia';
+            invioNotiziePerContinente($ContScelto);
+        break;
+
+    case "🗞 Africa 🗞":
+        $ContScelto = 'Africa';
+            invioNotiziePerContinente($ContScelto);
+        break;
+
+    case "🗞 Oceania 🗞":
+        $ContScelto = 'Oceania';
+            invioNotiziePerContinente($ContScelto);
+        break;
+        
+    case "🗞 Tutto il mondo 🗞":
+            invioNotiziePerContinente();
+        break;
+    
     default:
 
         sendMessage($chatId, "Comando non presente, /help per la lista comandi ");
 }
 
-$_SESSION['lastScelta'] = $text;
-print_r($_SESSION['lastScelta']);
-var_dump($_SESSION['lastScelta']);
 
 
 //funzione per l'invio di un messaggio
@@ -182,6 +181,7 @@ function sendMessage($chatId, $text, $tastiera = null)
     }
     $mess = $GLOBALS[website] . "/sendMessage?chat_id=$chatId&parse_mode=HTML&text=" . urlencode($text) . $tastierino;
     file_get_contents($mess);
+    
 }
 
 //funzione per l'invio di una foto
@@ -198,12 +198,12 @@ function invioDatiContagi($contScelto=null)
     
     foreach($continenti as $continente){
         sendMessage($GLOBALS[chatId], "<b>Nome nazione:</b> " . "<i>" . $continente->getNomeNazione() . "</i>\n" . 
-                            " <b>Numero contagi totali:</b> " . "<i>" . $continente->getNContagiTot() . "</i>\n" .
-                            " <b>Numero morti:</b> " . "<i>" . $continente->getNMorti() . "</i>\n" .
-                            " <b>Numero guariti:</b> " . "<i>" . $continente->getNGuariti() . "</i>\n" .
-                            " <b>Numero infetti attivi:</b> " . "<i>" . $continente->getNInfettiAttivi() . "</i>\n" .
-                            " <b>Numero nuovi casi:</b> " . "<i>" . $continente->getNNuoviCasi() . "</i>\n" .
-                            " <b>Numero test effettuati:</b> " . "<i>" . $continente->getNTest() . "</i>\n"
+                            "<b>Numero contagi totali:</b> " . "<i>" . $continente->getNContagiTot() . "</i>\n" .
+                            "<b>Numero morti:</b> " . "<i>" . $continente->getNMorti() . "</i>\n" .
+                            "<b>Numero guariti:</b> " . "<i>" . $continente->getNGuariti() . "</i>\n" .
+                            "<b>Numero infetti attivi:</b> " . "<i>" . $continente->getNInfettiAttivi() . "</i>\n" .
+                            "<b>Numero nuovi casi:</b> " . "<i>" . $continente->getNNuoviCasi() . "</i>\n" .
+                            "<b>Numero test effettuati:</b> " . "<i>" . $continente->getNTest() . "</i>\n"
                         ); 
         }
 }
@@ -215,12 +215,12 @@ function invioDatiContagiRegione($regioneScelta)
     
     foreach($regione as $regioni){
         sendMessage($GLOBALS[chatId], "<b>Nome nazione:</b> " . "<i>" . $regioni->getNomeRegione() . "</i>\n" . 
-                            " <b>Numero contagi totali:</b> " . "<i>" . $regioni->getNContagiTot() . "</i>\n" .
-                            " <b>Numero morti:</b> " . "<i>" . $regioni->getNMorti() . "</i>\n" .
-                            " <b>Numero guariti:</b> " . "<i>" . $regioni->getNGuariti() . "</i>\n" .
-                            " <b>Numero infetti attivi:</b> " . "<i>" . $regioni->getNInfettiAttivi() . "</i>\n" .
-                            " <b>Numero nuovi casi:</b> " . "<i>" . $regioni->getNNuoviCasi() . "</i>\n" .
-                            " <b>Numero test effettuati:</b> " . "<i>" . $regioni->getNTest() . "</i>\n"
+                            "<b>Numero contagi totali:</b> " . "<i>" . $regioni->getNContagiTot() . "</i>\n" .
+                            "<b>Numero morti:</b> " . "<i>" . $regioni->getNMorti() . "</i>\n" .
+                            "<b>Numero guariti:</b> " . "<i>" . $regioni->getNGuariti() . "</i>\n" .
+                            "<b>Numero infetti attivi:</b> " . "<i>" . $regioni->getNInfettiAttivi() . "</i>\n" .
+                            "<b>Numero nuovi casi:</b> " . "<i>" . $regioni->getNNuoviCasi() . "</i>\n" .
+                            "<b>Numero test effettuati:</b> " . "<i>" . $regioni->getNTest() . "</i>\n"
                         ); 
     }
 }
@@ -233,9 +233,9 @@ function invioNotiziePerContinente($continenteScelto)
     foreach($notizie as $notizia){
         sendPhoto($GLOBALS[chatId],$notizia->getImmagine());
         sendMessage($GLOBALS[chatId], "<b>Titolo:</b> " . "<i>" . $notizia->getTitolo() . "</i>\n" . 
-                            " <b>Descrizione:</b> " . "<i>" . $notizia->getDescrizione() . "</i>\n" .
-                            " <b>Link:</b> " . "<i>" . $notizia->getLink() . "</i>\n" .
-                            " <b>Data:</b> " . "<i>" . $notizia->getData() . "</i>\n"
+                            "<b>Descrizione:</b> " . "<i>" . $notizia->getDescrizione() . "</i>\n" .
+                            "<b>Link:</b> " . "<i>" . $notizia->getLink() . "</i>\n" .
+                            "<b>Data:</b> " . "<i>" . $notizia->getData() . "</i>\n"
                         ); 
     }
 }
