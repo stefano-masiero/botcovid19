@@ -53,19 +53,37 @@ class Notizie
             $stmt->bindParam(':nomeContinente', $nomeContinente, PDO::PARAM_STR);
             $stmt->execute();
         } catch (PDOException $e) {
-            var_dump($p);
+            echo $e->errorInfo();
         }
     }
-/*
-    public static function getUtente($userName)
+     public static function getNotizieFromContinenteObj($where = null)
     {
         $conn = Database::getConnectionPDO();
-        $query = "SELECT * FROM utenti WHERE userName=:username";
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(':username', $userName, PDO::PARAM_STR);
-        return $stmt->fetch();
+        $query =    "SELECT * FROM Notizia";
+        if (isset($where))
+            $query .= " where nomeContinente= :where ";
+            
+
+        try {
+            $stmt = $conn->prepare($query);
+            if (isset($where))
+            $stmt->bindParam(':where', $where, PDO::PARAM_STR);
+            $stmt->execute();
+            $list = $stmt->fetchAll(PDO::FETCH_CLASS, 'Notizia');
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        return $list;
     }
-*/
+    
+    public static function eliminaNotizie()
+    {
+        $conn = Database::getConnectionPDO();
+        $sql = "DELETE FROM Notizia";
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute();
+    }
+
     public static function getLista($where = null, $orderBy = null)
     {
         $conn = Database::getConnectionPDO();

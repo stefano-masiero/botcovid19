@@ -136,10 +136,10 @@ class Regioni
         return $list;
     }
     
-     public static function getContagiFromContinenteObj($where = null)
+    public static function getContagiFromContinenteObj($where = null)
     {
         $conn = Database::getConnectionPDO();
-        $query =    "SELECT nomeRegione,nomeNazione, nContagiTot, nMorti, nGuariti, nInfettiAttivi, nNuoviCasi, nTest FROM `Regione` join Nazione using (nomeNazione) join Continente using(nomeContinente) ";
+        $query =    "SELECT nomeRegione,nomeNazione, SUM(nContagiTot) as nContagiTot, SUM(nMorti) as nMorti, SUM(nGuariti) as nGuariti , SUM(nInfettiAttivi) as nInfettiAttivi, SUM(nNuoviCasi) as nNuoviCasi, SUM(nTest) as nTest FROM `Regione` join Nazione using (nomeNazione) join Continente using(nomeContinente) ";
         if (isset($where))
             $query .= " where nomeContinente= :where ";
             
@@ -156,11 +156,24 @@ class Regioni
         }
         return $list;
     }
+    
+    public static function getContagiFromContinenteSingoloObj($where)
+    {
+        $conn = Database::getConnectionPDO();
+        $query ="SELECT nomeRegione, nContagiTot, nMorti, nGuariti, nInfettiAttivi, nNuoviCasi, nTest FROM Regione WHERE nomeNazione = '$where'";
+        try {
+            $stmt = $conn->prepare($query);
+            if (isset($where))
+            $stmt->bindParam(':where', $where, PDO::PARAM_STR);
+            $stmt->execute();
+            $list = $stmt->fetchAll(PDO::FETCH_CLASS, 'Regione');
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        return $list;
+    }
 
-    /************************************************************************************
-     * utilizzo di DAO senza DO. I metodi prendono un oggetto e restituiscono SOLO il resultset DELLA QUERY
-     ************************************************************************************* */
-
+    
     public static function getUtente($userName)
     {
         $conn = Database::getConnectionPDO();
@@ -190,6 +203,11 @@ class Regioni
         return $list;
     }
 }
+
+/************************************************************************************
+     * utilizzo di DAO senza DO. I metodi prendono un oggetto e restituiscono SOLO il resultset DELLA QUERY
+     ************************************************************************************* */
+
 /*
 ****************************************************DATA OBJECT ****************************************************
 DO-> mappatura del record tabella
