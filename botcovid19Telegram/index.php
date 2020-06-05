@@ -6,7 +6,7 @@ require_once("../Datamodel/notizia.php");
 
 
 
-$botToken = "1210512979:AAE9sTum2aO82tONl0npYP-5PhXS-iIruN0";
+$botToken = "";
 
 $website = "https://api.telegram.org/bot" . $botToken;
 
