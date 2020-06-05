@@ -1,5 +1,4 @@
 <?php
-session_start(); 
 
 require_once("../Datamodel/regione.php");
 require_once("../Datamodel/notizia.php");
