@@ -53,7 +53,7 @@ INSERT INTO `Continente` (`nomeContinente`) VALUES
 
 CREATE TABLE `Nazione` (
   `nomeNazione` varchar(50) NOT NULL,
-  `bandiera` blob,
+  `bandiera` varchar(200),
   `nomeContinente` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
