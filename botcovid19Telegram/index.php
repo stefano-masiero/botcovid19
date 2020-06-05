@@ -19,12 +19,10 @@ $update = json_decode($update, TRUE);
 $chatId = $update['message']['from']['id'];
 
 
-
 $text = $update['message']['text'];
 
 
 $nameUtente = $update['message']['from']['username'];
-
 
 //switch per i vari comandi
 switch ($text) {
@@ -86,7 +84,7 @@ switch ($text) {
 
     //Parte della selezione del continente
     case "📉 America 📈":
-        $tastieraBenvenuto = '["Nord America","Sud America"],["Back"]';
+        $tastieraBenvenuto = '["📉 Nord America 📈","📉 Sud America 📈"],["Back"]';
         sendMessage($chatId, "Seleziona il continente", $tastieraBenvenuto);
         break;
 
@@ -226,7 +224,7 @@ function invioDatiContagiRegione($regioneScelta)
 }
 
 //funzione per prelevare le notizie dei continenti
-function invioNotiziePerContinente($continenteScelto)
+function invioNotiziePerContinente($continenteScelto=null)
 {
     $notizie = Notizie::getNotizieFromContinenteObj($continenteScelto);
     
