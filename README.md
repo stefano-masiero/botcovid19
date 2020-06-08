@@ -1,5 +1,5 @@
 # Botcovid19
-Bot Telegram che permette di recuperare i dati sui contagi a livello mondiale e in Italia con l'aggiunta di notizie aggiornate per continente
+Bot Telegram che permette di recuperare i dati sui contagi a livello mondiale e in Italia per Regioni con l'aggiunta di notizie aggiornate per continente
 
 **Siti usati per il recupero dei dati**
  1. https://www.worldometers.info/coronavirus/
