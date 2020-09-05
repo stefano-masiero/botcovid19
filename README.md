@@ -10,4 +10,4 @@ Bot Telegram che permette di recuperare i dati sui contagi a livello mondiale e 
 https://simplehtmldom.sourceforge.io/
 
 **Link al bot**
-https://telegram.me/corona_crawler19_bot
+https://telegram.me/coronavirus_official_bot
